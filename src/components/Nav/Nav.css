@@ -1,0 +1,7 @@
+.nav1 {
+    @apply absolute top-full mt-2 right-0 isolate blur-sm opacity-0 invisible;
+}
+
+.nav1.open {
+    @apply opacity-100 scale-100 visible;
+}

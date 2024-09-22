@@ -1,3 +1,5 @@
+import { CgProfile } from "react-icons/cg";
+import { FaUsers } from "react-icons/fa";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { SiMarketo } from "react-icons/si";
 import { SiWebauthn } from "react-icons/si";
@@ -6,13 +8,14 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
 import "./Nav.css";
+import Theme from "../theme/Theme";
 
 const Nav = () => {
     const [open, setOpen] = useState(false);
 
     return (
         <header className=" fixed top-0 left-0 w-full flex items-center bg-gradient-to-b from-zinc-900 to-zinc-900/0 z-40">
-            <div className="max-w-screen-2xl w-full mx-auto px-4 pt-5  flex items-center justify-between md:grid md:grid-cols-[1fr,3fr,1fr]">
+            <div className="max-w-screen-2xl w-full mx-auto px-2 pt-5  flex items-center justify-between md:grid md:grid-cols-[1fr,3fr,1fr]">
                 <h1>
                     <Link to="/">
                         <MdShoppingBasket className="text-zinc-50 w-[30px] h-[30px]" />
@@ -46,9 +49,8 @@ const Nav = () => {
                         </svg>
                     </label>
 
-                    {/* Menu Items */}
                     <ul
-                        className={` justify-self-center  menu bg-base-200 absolute md:static md:flex md:menu-horizontal  right-0 p-2 rounded-box gap-2 transform transition-all duration-300 ease-in-out ${
+                        className={` justify-self-center  menu bg-base-200 absolute md:static md:flex md:menu-horizontal  right-0 p-2 rounded-box gap-1 transform transition-all duration-300 ease-in-out ${
                             open
                                 ? "opacity-100 translate-y-0 visible"
                                 : "opacity-0 -translate-y-3 invisible"
@@ -71,33 +73,29 @@ const Nav = () => {
                                 Home
                             </NavLink>
                         </li>
-                        {/* {open && (
+
+                        {localStorage.getItem("token") ? (
                             <li className="md:hidden">
-                                {localStorage.getItem("token") ? (
-                                    <Link to="/profile">
-                                        <div className="avatar online">
-                                            <div className="w-10 rounded-full">
-                                                <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                                            </div>
-                                        </div>
-                                    </Link>
-                                ) : (
-                                    <div className="flex items-center gap-2">
-                                        <Link to="/register" className="">
-                                            <button className="btn btn-ghost btn-sm">
-                                                Ghost
-                                            </button>
-                                        </Link>
-                                        <div>/</div>
-                                        <Link to="/login" className="m">
-                                            <button className="btn btn-primary btn-sm">
-                                                Login
-                                            </button>
-                                        </Link>
-                                    </div>
-                                )}
+                                <Link to="/profile">
+                                    <CgProfile className="text-currentColor w-5 h-5" />{" "}
+                                    Profile
+                                </Link>{" "}
                             </li>
-                        )} */}
+                        ) : (
+                            <li className=" md:hidden max-w-[119px] ">
+                                <Link
+                                    to="/auth/signup"
+                                    className="btn btn-ghost btn-sm">
+                                    Sign Up
+                                </Link>
+
+                                <Link
+                                    to="/auth/signin"
+                                    className="btn btn-primary btn-sm">
+                                    Sign In
+                                </Link>
+                            </li>
+                        )}
 
                         <li>
                             <NavLink to="/products">
@@ -111,22 +109,28 @@ const Nav = () => {
                                 Cart
                             </NavLink>
                         </li>
+                        <li>
+                            <NavLink to="/users">
+                                <FaUsers className="text-currentColor w-5 h-5" />
+                                Users
+                            </NavLink>
+                        </li>
                     </ul>
                 </div>
 
                 <div
-                    className="max-md:hidden md:justify-self-end"
+                    className="max-md:hidden flex items-center  md:justify-self-end"
                     to="/profile">
                     {localStorage.getItem("token") ? (
                         <Link to="/profile">
                             <div className="avatar online">
                                 <div className="w-10 rounded-full">
-                                    <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                    <CgProfile className="w-[35px] h-[35px] " />
                                 </div>
                             </div>
                         </Link>
                     ) : (
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center ">
                             <Link to="/auth/signup" className="">
                                 <button className="btn btn-ghost btn-sm">
                                     Sign Up

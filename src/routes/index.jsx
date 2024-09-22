@@ -9,6 +9,8 @@ const SignIn = lazy(() => import("./auth/signIn/SignIn"));
 const SignUp = lazy(() => import("./auth/signUp/SignUp"));
 const Private = lazy(() => import("./private/Private"));
 const Products = lazy(() => import("./products/Products"));
+const Users = lazy(() => import("./users/Users"));
+const Details = lazy(() => import("./details/Details"));
 
 const RouteController = () => {
     return useRoutes([
@@ -69,6 +71,23 @@ const RouteController = () => {
             element: (
                 <Suspense fallback={<Loading />}>
                     <Products />
+                </Suspense>
+            ),
+        },
+        {
+            path: "/users",
+            element: (
+                <Suspense fallback={<Loading />}>
+                    <Users />
+                </Suspense>
+            ),
+        },
+
+        {
+            path: "/users/:id",
+            element: (
+                <Suspense fallback={<Loading />}>
+                    <Details />
                 </Suspense>
             ),
         },

@@ -1,12 +1,13 @@
 import { useSignInMutation } from "../../../redux/api/authApi";
 import { Button, Form, Input, Typography, notification } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 const { Title, Text } = Typography;
 import { signIn } from "../../../redux/slices/authSlice";
 
 const SignIn = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [signInRequest, { data, isSuccess }] = useSignInMutation();
 
@@ -19,6 +20,7 @@ const SignIn = () => {
             notification.success({
                 message: "Successfully signed in! Go ahead 😊",
             });
+            navigate("/");
         }
     }, [isSuccess]);
 
@@ -81,8 +83,8 @@ const SignIn = () => {
 
                 <Text className="text-center text-zinc-700">
                     Don't have an account?{" "}
-                    <Link to="/auth/login" className="text-blue-500">
-                        Log in
+                    <Link to="/auth/signup" className="text-blue-500">
+                        Sign Up
                     </Link>
                 </Text>
             </Form>

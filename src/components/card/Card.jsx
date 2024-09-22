@@ -1,6 +1,14 @@
 import React from "react";
+import { addToCart } from "../../redux/slices/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Card = ({ product }) => {
+    const dispatch = useDispatch();
+
+    const handleAddToCart = product => {
+        dispatch(addToCart({ ...product, quantity: 1 }));
+    };
+
     return (
         <div
             key={product.id}
@@ -28,6 +36,11 @@ const Card = ({ product }) => {
                     </div>
                 </div>
             </div>
+            <button
+                onClick={() => handleAddToCart(product)}
+                className="btn btn-primary">
+                Add to cart
+            </button>
         </div>
     );
 };

@@ -2,9 +2,11 @@ import React from "react";
 import { useProductsAllQuery } from "../../redux/api/productApi";
 import Container from "../../utils/Container";
 import Card from "../../components/card/Card";
+import Loading from "../../components/loading/Loading";
 
 const Products = () => {
     const { data, isLoading } = useProductsAllQuery();
+    if (isLoading) return <Loading />;
     console.log(data);
 
     return (

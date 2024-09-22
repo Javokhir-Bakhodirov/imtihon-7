@@ -20,32 +20,33 @@ const cartSlice = createSlice({
             const index = state.products.findIndex(
                 product => product._id === action.payload._id
             );
+
             if (index === -1) {
                 state.products.push({ ...action.payload, quantity: 1 });
                 notification.success({
                     message: "Added to Cart",
-                    description: `${state.products[index].product_name} has been added to your cart.`,
+                    description: `${action.payload.title} has been added to your cart.`,
                     placement: "bottomRight",
                 });
             } else {
                 if (state.products[index].quantity) {
-                    state.products[index].quantity =
-                        state.products[index].quantity + 1;
+                    state.products[index].quantity += 1;
                     notification.success({
                         message: "Added to Cart",
-                        description: `${state.products[index].product_name} has been added to your cart.`,
+                        description: `${state.products[index].title} has been added to your cart.`,
                         placement: "bottomRight",
                         duration: 1,
                     });
                 } else {
                     notification.error({
-                        message: "Added to Cart",
-                        description: `${state.products[index].product_name} is out of stock.`,
+                        message: "Out of Stock",
+                        description: `${state.products[index].title} is out of stock.`,
                         placement: "bottomRight",
                         duration: 1,
                     });
                 }
             }
+
             saveCartToLocalStorage(state);
         },
         removeFromCart: (state, action) => {

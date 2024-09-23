@@ -2,6 +2,7 @@ import FooterComponent from "./components/footer/FooterComponent";
 import Nav from "./components/Nav/Nav";
 import RouteController from "./routes";
 import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 function App() {
     const { pathname } = useLocation();

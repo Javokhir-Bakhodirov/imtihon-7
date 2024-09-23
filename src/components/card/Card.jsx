@@ -7,6 +7,7 @@ const Card = ({ product }) => {
 
     const handleAddToCart = product => {
         dispatch(addToCart({ ...product, quantity: 1 }));
+        console.log(product);
     };
 
     return (

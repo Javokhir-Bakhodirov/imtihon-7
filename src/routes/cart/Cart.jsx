@@ -9,17 +9,13 @@ const Cart = () => {
     console.log(products);
 
     return (
-        <section className="cart-section pt-[50px]  dark:text-gray-100 pb-[150px] h-[100vh] ">
+        <section className="cart-section pt-[50px] min-h-screen  dark:text-gray-100 pb-[150px] ">
             <Container>
-                <ul className="grid grid-cols-4 gap-10 mt-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {products.map(product => (
-                        <Card
-                            key={product.id}
-                            product={product}
-                            cardType="cart"
-                        />
+                        <Card key={product.id} product={product} />
                     ))}
-                </ul>
+                </div>
             </Container>
         </section>
     );

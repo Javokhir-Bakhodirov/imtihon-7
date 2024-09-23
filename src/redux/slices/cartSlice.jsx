@@ -31,6 +31,7 @@ const cartSlice = createSlice({
             } else {
                 if (state.products[index].quantity) {
                     state.products[index].quantity += 1;
+                    state.products.push({ ...action.payload, quantity: 1 });
                     notification.success({
                         message: "Added to Cart",
                         description: `${state.products[index].title} has been added to your cart.`,

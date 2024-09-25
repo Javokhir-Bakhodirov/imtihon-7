@@ -115,6 +115,12 @@ const Nav = () => {
                                 Users
                             </NavLink>
                         </li>
+                        <li>
+                            <NavLink to="/form">
+                                <FaUsers className="text-currentColor w-5 h-5" />
+                                form
+                            </NavLink>
+                        </li>
                     </ul>
                 </div>
 

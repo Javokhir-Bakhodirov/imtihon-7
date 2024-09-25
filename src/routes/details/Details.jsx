@@ -165,7 +165,8 @@ const Details = () => {
 
                 <dialog
                     id="delete_modal"
-                    className="modal modal-bottom sm:modal-middle">
+                    className="modal modal-bottom sm:modal-middle"
+                    style={{ position: "sticky", bottom: "0", top: "auto" }}>
                     <div className="modal-box">
                         <h3 className="font-bold text-lg">
                             Are you sure you want to delete{" "}

@@ -12,6 +12,7 @@ const Products = lazy(() => import("./products/Products"));
 const Users = lazy(() => import("./users/Users"));
 const Details = lazy(() => import("./details/Details"));
 const Cart = lazy(() => import("./cart/Cart"));
+const Form = lazy(() => import("./form/Form"));
 
 const RouteController = () => {
     return useRoutes([
@@ -98,6 +99,15 @@ const RouteController = () => {
             element: (
                 <Suspense fallback={<Loading />}>
                     <Cart />
+                </Suspense>
+            ),
+        },
+
+        {
+            path: "/form",
+            element: (
+                <Suspense fallback={<Loading />}>
+                    <Form />
                 </Suspense>
             ),
         },

@@ -110,6 +110,7 @@ const Details = () => {
 
                 <dialog
                     id="update_modal"
+                    style={{ position: "sticky", bottom: "0", top: "auto" }}
                     className="modal modal-bottom sm:modal-middle">
                     <div className="modal-box">
                         <h3 className="font-bold text-lg">Update User</h3>
